@@ -5,6 +5,7 @@
  */
 package src.main.java.com.vgorcinschi.classeight.model;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.logging.log4j.LogManager;
@@ -16,14 +17,14 @@ import org.apache.logging.log4j.Logger;
  */
 public class Invoice {
 
-    private static AtomicInteger idProvider;
+    private static AtomicInteger idProvider = new AtomicInteger(1);
     private final int invoiceId;
-    private static Map<Character, Package> packages;
+    private static Map<Character, Package> packages = new HashMap<>();
     private final Package invoicePackage;
     private final double MAX_HOURS = 744;
     private final double hoursUsed;
 
-    private static final Logger log = LogManager.getLogger();
+    private static final Logger log = LogManager.getLogger("Invoice");
 
     static {
         packages.put('A', Package.A);
